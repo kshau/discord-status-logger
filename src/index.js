@@ -5,18 +5,23 @@ const {fetch} = require("undici");
 const {TOKEN, WEBHOOK_URL} = process.env;
 
 var statuses = {};
+var lastLogged;
 
 async function webhookMsg(url, content) {
+  lastLogged = content;
+  if (lastLogged) {
     await fetch(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json', 
-        }, 
-        body: JSON.stringify({
-          username: "Status Logger", 
-          content: content
-        })
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json', 
+      }, 
+      body: JSON.stringify({
+        username: "Status Logger", 
+        content: content
+      })
     })
+  }
+    
 }
 
 function wsConnect() {
@@ -42,11 +47,12 @@ function wsConnect() {
 
   ws.on("message", (data) => {
 
-      var json = JSON.parse(data);
+    var json = JSON.parse(data);
 
-      var {op, t, d} = json;
-
-    if (t == "PRESENCE_UPDATE" && d.activities != undefined && d.activities.length > 0) {
+    var {op, t, d} = json;
+    
+    try {
+      if (t == "PRESENCE_UPDATE" && d.activities != undefined && d.activities.length > 0) {
 
         var status = d.activities[0];
         var userId = d.user.id;
@@ -81,9 +87,12 @@ function wsConnect() {
                 break;
 
             }
+      }
     }
       
-
+    catch (err) {
+      console.log(err);
+    }
 
       if (op == 10) {
         interval = d.heartbeat_interval;
