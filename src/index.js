@@ -7,18 +7,18 @@ const {TOKEN, WEBHOOK_URL} = process.env;
 var statuses = {};
 
 async function webhookMsg(url, content) {
-  
-  await fetch(url, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json', 
-    }, 
-    body: JSON.stringify({
-      username: "Status Logger", 
-      content: content
+  if (content != undefined) {
+    await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json', 
+      }, 
+      body: JSON.stringify({
+        username: "Status Logger", 
+        content: content
+      })
     })
-  })
-  
+  }
     
 }
 
