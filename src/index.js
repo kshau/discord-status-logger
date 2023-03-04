@@ -7,7 +7,7 @@ const {TOKEN, WEBHOOK_URL} = process.env;
 var statuses = {};
 
 async function webhookMsg(url, content) {
-  if (content != undefined) {
+  if (content != "undefined") {
     await fetch(url, {
       method: 'POST',
       headers: {
