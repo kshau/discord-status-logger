@@ -61,7 +61,7 @@ function wsConnect() {
                 if (statuses[userId] == undefined) {
                     statuses[userId] = {type: "", content: ""};
                 }
-                if (statuses[userId].type != "Custom Status" || statuses[userId].content != status.state) {
+                if ((statuses[userId].type != "Custom Status" || statuses[userId].content != status.state) && status.state != undefined) {
                     statuses[userId] = {type: "Custom Status", content: status.state};
                     webhookMsg(WEBHOOK_URL, `:keyboard: <@${userId}> - \`${status.state}\``);
                 }
