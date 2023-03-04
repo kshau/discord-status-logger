@@ -71,7 +71,7 @@ function wsConnect() {
                 }
                 if (statuses[userId].type != "Spotify" || statuses[userId].song != status.details) {
                     statuses[userId] = {type: "Spotify", song: status.details};
-                    webhookMsg(WEBHOOK_URL, ` :spotify: <@${userId}> - Listening to **Spotify** (\`${statuses[userId].song}\` by __${status.state}__)`);
+                    webhookMsg(WEBHOOK_URL, ` :musical_note: <@${userId}> - Listening to **Spotify** (\`${statuses[userId].song}\` by __${status.state}__)`);
                 }
                 break;
             default:
