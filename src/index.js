@@ -51,7 +51,6 @@ function wsConnect() {
         var status = d.activities[0];
         var userId = d.user.id;
         
-        console.log(status);
         switch (status.name) {
             case "Custom Status":
                 if (statuses[userId] == undefined) {
