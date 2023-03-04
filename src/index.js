@@ -5,7 +5,6 @@ const {fetch} = require("undici");
 const {TOKEN, WEBHOOK_URL} = process.env;
 
 var statuses = {};
-var lastLogged;
 
 async function webhookMsg(url, content) {
   lastLogged = content;
