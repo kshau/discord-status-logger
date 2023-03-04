@@ -62,7 +62,7 @@ function wsConnect() {
                 }
                 if (statuses[userId].type != "Custom Status" || statuses[userId].content != status.state) {
                     statuses[userId] = {type: "Custom Status", content: status.state};
-                    webhookMsg(WEBHOOK_URL, `<@${userId}> - \`${status.state}\``);
+                    webhookMsg(WEBHOOK_URL, `:smiley: <@${userId}> - \`${status.state}\``);
                 }
                 break;
             case "Spotify":
@@ -71,7 +71,7 @@ function wsConnect() {
                 }
                 if (statuses[userId].type != "Spotify" || statuses[userId].song != status.details) {
                     statuses[userId] = {type: "Spotify", song: status.details};
-                    webhookMsg(WEBHOOK_URL, `<@${userId}> - Listening to **Spotify** (\`${statuses[userId].song}\` by __${status.state}__)`);
+                    webhookMsg(WEBHOOK_URL, `:spotify: <@${userId}> - Listening to **Spotify** (\`${statuses[userId].song}\` by __${status.state}__)`);
                 }
                 break;
             default:
@@ -80,7 +80,7 @@ function wsConnect() {
                 }
                 if (statuses[userId].type != "Playing" || statuses[userId].activity != status.name) {
                     statuses[userId] = {type: "Playing", activity: status.name};
-                    webhookMsg(WEBHOOK_URL, `<@${userId}> - Playing **${status.name}**`);
+                    webhookMsg(WEBHOOK_URL, `:video_game: <@${userId}> - Playing **${status.name}**`);
                 }
                 break;
 
