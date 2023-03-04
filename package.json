@@ -1,0 +1,17 @@
+{
+  "name": "discord-status-log",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "kshaurya731",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "undici": "^5.20.0",
+    "ws": "^8.12.1"
+  }
+}
