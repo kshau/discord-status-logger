@@ -63,7 +63,7 @@ function wsConnect() {
           }
           
           getUser(userId).then(data => {
-            if (data != undefined && status != undefined) {
+            if (data != undefined && status.name != undefined) {
               switch (status.name) {
                 case "Custom Status":
                   if (data.status != `[${status.emoji.name}] ${status.state}` || data.statusType != "Custom Status") {
