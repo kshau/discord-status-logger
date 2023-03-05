@@ -86,6 +86,12 @@ function wsConnect() {
               }
             }
           })
+
+          .catch(err => {
+            if (!(err instanceof TypeError)) {
+              console.error(err);
+            }
+          })
           
         })
         
