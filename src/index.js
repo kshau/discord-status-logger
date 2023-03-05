@@ -56,8 +56,6 @@ function wsConnect() {
         var status = d.activities[0];
         var userId = d.user.id;
 
-        console.log(d);
-
         hasUser(userId).then(has => {
 
           if (!has) {
